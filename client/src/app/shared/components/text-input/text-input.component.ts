@@ -7,7 +7,7 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
   styleUrls: ['./text-input.component.scss']
 })
 export class TextInputComponent implements OnInit, ControlValueAccessor {
-  @ViewChild('input', { static: true} ) input: ElementRef;
+  @ViewChild('input', { static: true }) input: ElementRef;
   @Input() type = 'text';
   @Input() label: string;
 
@@ -15,7 +15,7 @@ export class TextInputComponent implements OnInit, ControlValueAccessor {
     this.controlDir.valueAccessor = this;
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     const control = this.controlDir.control;
     const validators = control.validator ? [control.validator] : [];
     const asyncValidators = control.asyncValidator ? [control.asyncValidator] : [];
@@ -25,16 +25,12 @@ export class TextInputComponent implements OnInit, ControlValueAccessor {
     control.updateValueAndValidity();
   }
 
-  onChange(event) {
+  onChange(event) { }
 
-  }
-
-  onTouched() {
-
-  }
+  onTouched() { }
 
   writeValue(obj: any): void {
-    this.input.nativeElement.value = obj || ''; // set input equal to obj OR an empty string
+    this.input.nativeElement.value = obj || '';
   }
 
   registerOnChange(fn: any): void {
@@ -44,6 +40,5 @@ export class TextInputComponent implements OnInit, ControlValueAccessor {
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
   }
-
 
 }
