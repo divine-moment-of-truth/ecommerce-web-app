@@ -13,12 +13,14 @@ import { AccountService } from 'src/app/account/account.service';
 export class NavBarComponent implements OnInit {
   basket$: Observable<IBasket>;
   currentUser$: Observable<IUser>;
+  basketQuantity$: Observable<number>;
 
   constructor(private basketService: BasketService, private accountService: AccountService) { }
 
   ngOnInit(): void {
     this.basket$ = this.basketService.basket$;
     this.currentUser$ = this.accountService.currentUser$;
+    // this.basketQuantity$ = this.basketService.basketQuantity$;
   }
 
   logout() {

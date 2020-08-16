@@ -89,6 +89,8 @@ namespace Infrastructure.Services
             if (order == null) return null;
 
             order.Status = OrderStatus.PaymentFailed;
+            _unitOfWork.Repository<Order>().Update(order);
+            
             await _unitOfWork.Complete();
 
             return order;
